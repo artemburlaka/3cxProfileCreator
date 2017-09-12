@@ -17,13 +17,14 @@ public class MainForm extends JFrame {
     private JMenuItem infoAbout = new JMenuItem("О программе");
 
     private JLabel labelEmail = new JLabel("  Введите email:");
-    private static JTextField inputEmail = new JTextField("example@koderline.com", 5);
+    private static JTextField inputEmail = new JTextField("example@koderline.com", 20);
     private JLabel labelPass = new JLabel("  Введите пароль:");
-    private static JTextField inputPass = new JTextField("", 5);
-    private JRadioButton radio1 = new JRadioButton("Рос телефония");
+    private static JPasswordField inputPass = new JPasswordField("", 20);
+    private static JRadioButton radio1 = new JRadioButton("Рос телефония");
     private JRadioButton radio2 = new JRadioButton("Укр телефония");
     private JCheckBox check = new JCheckBox("Check", false);
     private JButton button = new JButton("Ok");
+
 
     public MainForm() {
         super("3cxProfileCreator");
@@ -39,6 +40,7 @@ public class MainForm extends JFrame {
         this.setJMenuBar(menuBar);
 
         infoAbout.addActionListener(new ActionFormAbout());
+        settingsParam.addActionListener(new FormSettingsParam());
 
         Container container = this.getContentPane();
         container.setLayout(new GridLayout(4, 2, 2, 2));
@@ -59,11 +61,20 @@ public class MainForm extends JFrame {
 
     }
 
-    public static String getInputEmail() {
-        return inputEmail.getText();
+    public static String getInputLogin () {
+        String s = inputEmail.getText();
+        int a = s.indexOf("@");
+        s = s.substring(0,a);
+        return s;
     }
 
     public static String getInputPass() {
         return inputPass.getText();
+    }
+
+    public static String getProfileType() {
+        if (radio1.isSelected()) {
+        return "RUS";}
+        else return "UKR";
     }
 }

@@ -12,7 +12,6 @@ public class ActionFormAbout implements ActionListener {
 
     private JLabel labelAbout = new JLabel("Создание профилей в 3CXPhone");
 
-
         public void actionPerformed(ActionEvent e) {
         JFrame formAbout = new JFrame("О программе");
         formAbout.setSize(350,150);

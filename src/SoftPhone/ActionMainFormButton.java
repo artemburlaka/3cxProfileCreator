@@ -11,24 +11,21 @@ import java.io.File;
 public class ActionMainFormButton implements ActionListener {
     public void actionPerformed (ActionEvent e) {
 
-        String server = "server";
         File f = new File(System.getenv("LOCALAPPDATA") + "\\1test");
         if (f.exists()) {
             System.out.println("1test is exist");
-//                new ProfileCreator(inputEmail.getText(), inputPass.getText(), server);  //add later
-//                System.out.println("1test profile was created");
+            new ProfileCreator(MainForm.getProfileType(), MainForm.getInputLogin(), MainForm.getInputPass());
+            System.out.println("1test profile was created");
         }
         else {
-            new FolderCreator(MainForm.getInputEmail(), server);
+            new FolderCreator();
             System.out.println("1test folder was created");
-            new ProfileCreator(MainForm.getInputEmail(), MainForm.getInputPass(), server);
+            new ProfileCreator(MainForm.getProfileType(), MainForm.getInputLogin(), MainForm.getInputPass());
             System.out.println("1test profile was created");
         }
 
         String message = "";
-        message += "Text is " + MainForm.getInputEmail() + "\n";
-//        message += (radio1.isSelected() ? "Radio #1" : "Radio #2") + " is selected!\n";
-//        message += "Checkbox is " + ((check.isSelected()) ? "checked" : "unchecked");
+        message += "Text is " + MainForm.getInputLogin() + "\n";
         JOptionPane.showMessageDialog(null, message, "Output", JOptionPane.PLAIN_MESSAGE);
 
     }
